@@ -1,0 +1,134 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: RainDeployer
+    network: arbitrum-one
+    source:
+      address: "0xccCB3C03D9355B01883779EF15C1Be09cf3623F1"
+      abi: RainDeployer
+      startBlock: 337338448
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - PoolCreated
+      abis:
+        - name: RainDeployer
+          file: ./abis/RainDeployer.json
+      eventHandlers:
+        - event: PoolCreated(indexed address,indexed address,string)
+          handler: handlePoolCreated
+      file: ./src/rain-deployer.ts
+templates:
+  - kind: ethereum
+    name: RainPool
+    network: arbitrum-one
+    source:
+      abi: RainPool
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - CancelBuyOrder
+        - CancelSellOrder
+        - ChooseWinner
+        - Claim
+        - ClosePool
+        - CreateOracle
+        - CreatorClaim
+        - EnterLiquidity
+        - EnterOption
+        - ExecuteBuyOrder
+        - ExecuteSellOrder
+        - PlaceBuyOrder
+        - PlaceSellOrder
+        - PlatformClaim
+        - ResolverClaim
+        - ResolverSet
+        - Sync
+        - OpenDispute
+        - RainTokenBurned
+      abis:
+        - name: RainPool
+          file: ./abis/RainPool.json
+      eventHandlers:
+        - event: CancelBuyOrder(uint256,uint256,uint256,uint256,indexed address)
+          handler: handleCancelBuyOrder
+        - event: CancelSellOrder(uint256,uint256,uint256,uint256,indexed address)
+          handler: handleCancelSellOrder
+        - event: ChooseWinner(uint256,uint256,uint256,uint256)
+          handler: handleChooseWinner
+        - event: Claim(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleClaim
+        - event: ClosePool(bool)
+          handler: handleClosePool
+        - event: CreateOracle(indexed address,indexed address)
+          handler: handleCreateOracle
+        - event: CreatorClaim(indexed address,uint256)
+          handler: handleCreatorClaim
+        - event: EnterLiquidity(uint256,indexed address)
+          handler: handleEnterLiquidity
+        - event: EnterOption(uint256,uint256,uint256,indexed address)
+          handler: handleEnterOption
+        - event: ExecuteBuyOrder(uint256,uint256,uint256,uint256,uint256,indexed address,indexed
+            address)
+          handler: handleExecuteBuyOrder
+        - event: ExecuteSellOrder(uint256,uint256,uint256,uint256,uint256,indexed address,indexed
+            address)
+          handler: handleExecuteSellOrder
+        - event: PlaceBuyOrder(uint256,uint256,uint256,uint256,indexed address)
+          handler: handlePlaceBuyOrder
+        - event: PlaceSellOrder(uint256,uint256,uint256,uint256,indexed address)
+          handler: handlePlaceSellOrder
+        - event: PlatformClaim(indexed address,uint256)
+          handler: handlePlatformClaim
+        - event: ResolverClaim(indexed address,uint256)
+          handler: handleResolverClaim
+        - event: ResolverSet(indexed address)
+          handler: handleResolverSet
+        - event: Sync(uint256,uint256,uint256)
+          handler: handleSync
+        - event: OpenDispute(indexed address,uint256,uint256)
+          handler: handleOpenDispute
+        - event: RainTokenBurned(uint256)
+          handler: handleRainTokenBurned
+      file: ./src/rain-pool.ts
+  - kind: ethereum
+    name: ExternalSource
+    network: arbitrum-one
+    source:
+      abi: ExternalSource
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.9
+      language: wasm/assemblyscript
+      entities:
+        - ExternalSourceLaunched
+        - RefundClaimed
+        - RewardClaimed
+        - TimeExtended
+        - VoteCasted
+        - WinnerCalculated
+      abis:
+        - name: ExternalSource
+          file: ./abis/ExternalSource.json
+      eventHandlers:
+        - event: ExternalSourceLaunched((uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,string,address))
+          handler: handleExternalSourceLaunched
+        - event: RefundClaimed(indexed address,indexed address,uint256)
+          handler: handleRefundClaimed
+        - event: RewardClaimed(indexed address,uint256)
+          handler: handleRewardClaimed
+        - event: TimeExtended(indexed address,uint256,uint256)
+          handler: handleTimeExtended
+        - event: VoteCasted(indexed address,uint256)
+          handler: handleVoteCasted
+        - event: WinnerCalculated(indexed address,uint256)
+          handler: handleWinnerCalculated
+      file: ./src/external-source.ts

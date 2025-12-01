@@ -1,0 +1,297 @@
+type PoolCreated @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  poolCreator: Bytes! # address
+  uri: String # string
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CancelBuyOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderAmount: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  orderID: BigInt! # uint256
+  orderCreator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CancelSellOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderAmount: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  orderID: BigInt! # uint256
+  orderCreator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ChooseWinner @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  winnerOption: BigInt! # uint256
+  platformShare: BigInt! # uint256
+  liquidityShare: BigInt! # uint256
+  winningShare: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Claim @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  wallet: Bytes! # address
+  winnerOption: BigInt! # uint256
+  liquidityReward: BigInt! # uint256
+  reward: BigInt! # uint256
+  totalReward: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ClosePool @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  poolStatus: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CreateOracle @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  creatorContract: Bytes! # address
+  createdContract: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type CreatorClaim @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  wallet: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EnterLiquidity @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  baseAmount: BigInt! # uint256
+  wallet: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EnterOption @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  option: BigInt! # uint256
+  baseAmount: BigInt! # uint256
+  optionAmount: BigInt! # uint256
+  wallet: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ExecuteBuyOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  optionAmount: BigInt! # uint256
+  baseAmount: BigInt! # uint256
+  orderID: BigInt! # uint256
+  maker: Bytes! # address
+  taker: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ExecuteSellOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  optionAmount: BigInt! # uint256
+  baseAmount: BigInt! # uint256
+  orderID: BigInt! # uint256
+  maker: Bytes! # address
+  taker: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlaceBuyOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  orderAmount: BigInt! # uint256
+  orderID: BigInt! # uint256
+  maker: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlaceSellOrder @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  orderOption: BigInt! # uint256
+  orderPrice: BigInt! # uint256
+  orderAmount: BigInt! # uint256
+  orderID: BigInt! # uint256
+  maker: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PlatformClaim @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  wallet: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ResolverClaim @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  wallet: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ResolverSet @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  resolver: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Sync @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  pair: BigInt! # uint256
+  optionVotes: BigInt! # uint256
+  allVotes: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OpenDispute @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  caller: Bytes! # address
+  currentWinner: BigInt! # uint256
+  disputeFee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RainTokenBurned @entity(immutable: true) {
+  id: Bytes!
+  poolAddress: Bytes! # address
+  amountBurned: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ExternalSourceLaunched @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  externalSourceInstance_noOfOracles: BigInt! # uint256
+  externalSourceInstance_rewardPerOracle: BigInt! # uint256
+  externalSourceInstance_loyaltyFee: BigInt! # uint256
+  externalSourceInstance_totalExternalSourceCost: BigInt! # uint256
+  externalSourceInstance_totalOracleReward: BigInt! # uint256
+  externalSourceInstance_startTime: BigInt! # uint256
+  externalSourceInstance_endTime: BigInt! # uint256
+  externalSourceInstance_numberOfOptions: BigInt! # uint256
+  externalSourceInstance_externalSourceURI: String! # string
+  externalSourceInstance_creator: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RefundClaimed @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  contractAddress: Bytes! # address
+  claimer: Bytes! # address
+  refundAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RewardClaimed @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  claimer: Bytes! # address
+  reward: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type TimeExtended @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  contractAddress: Bytes! # address
+  oldEndTime: BigInt! # uint256
+  newEndTime: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type VoteCasted @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  voter: Bytes! # address
+  option: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WinnerCalculated @entity(immutable: true) {
+  id: Bytes!
+  oracleAddress: Bytes! # address
+  caller: Bytes! # address
+  option: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

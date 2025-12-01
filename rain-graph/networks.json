@@ -1,0 +1,8 @@
+{
+  "arbitrum-one": {
+    "RainDeployer": {
+      "address": "0xccCB3C03D9355B01883779EF15C1Be09cf3623F1",
+      "startBlock": 337338448
+    }
+  }
+}
